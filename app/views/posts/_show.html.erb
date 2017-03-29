@@ -1,0 +1,16 @@
+<div><h2><%= @word.content %></h2></div>
+<% if user_signed_in? %>
+<%= form_for([@word, @word.pairs.build]) do |f| %>
+
+	<p>
+		<h3><%= f.label 'Podaj skojarzenie:' %></h3>
+		<%= f.text_field :second_id, :required => 'required' %>
+	</p>
+	<p class="actions">
+		<%= f.submit 'Dodaj' %>
+	</p>
+<% end %>
+
+<% else %>
+	<h3> Zaloguj się by móc dodawać skojarzenia </h3>
+<% end %>

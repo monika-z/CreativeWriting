@@ -1,0 +1,27 @@
+<div class="posts-list">
+	<% if current_user.username == "admin" %>
+		<div class="page-heading">
+			<h1>Słowa</h1>
+		</div>
+		<div class="table-mrg">
+			<table>
+				<tbody>
+					<% @words.each do |word| %>
+						<tr>
+							<td><%= word.content %></td>
+							<td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, word %></td>
+							<td><%= link_to '<i class="fa fa-pencil-square" aria-hidden="true"></i>'.html_safe, edit_word_path(word) %></td>
+						</tr>
+		    		<% end %>
+				</tbody>
+			</table>
+		</div>
+
+	    
+
+
+		<div class='flickr_pagination'>
+			<%= will_paginate @words, :previous_label => '<i class="fa fa-caret-left" aria-hidden="true"></i>'.html_safe, :next_label => '<i class="fa fa-caret-right" aria-hidden="true"></i>'.html_safe  %>
+		</div>
+	<%end%>
+</div>

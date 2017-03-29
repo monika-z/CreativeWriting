@@ -1,0 +1,33 @@
+<div class="login">
+  <div class="login-box">
+    <ul class="login-top">
+       <li><%= link_to('Logowanie', new_user_session_path)  %></li>
+       <li class="inactive"><%= link_to('Rejestracja', new_user_registration_path)  %></li>
+       <div class="clear"> </div>
+    </ul>           
+
+    <div class="login-content">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.email_field :email, placeholder: "Email",  autofocus: true, :required => 'required' %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, placeholder: "Hasło", autocomplete: "off", :required => 'required' %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "<span></span>Zapamiętaj mnie".html_safe %>
+          </div>
+        <% end -%>
+
+        <div class="login-button">
+            <%= f.submit "Zaloguj" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

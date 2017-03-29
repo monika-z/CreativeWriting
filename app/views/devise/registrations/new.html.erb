@@ -1,0 +1,36 @@
+<div class="login">
+  <div class="login-box">
+    <ul class="login-top">
+       <li class="inactive-reg"><span><%= link_to('Logowanie', new_user_session_path)  %></span></span></li>
+       <li><span><%= link_to('Rejestracja', new_user_registration_path)  %></span></li>
+       <div class="clear"> </div>
+    </ul> 
+
+    <div class="login-content">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+        <div class="field">
+            <%= f.email_field :email, placeholder: "Email",  autofocus: true, :required => 'required' %>
+        </div>
+
+    	
+    	  <div class="field">
+          <%= f.text_field :username, placeholder: "Nazwa użytkownika",  :required => 'required' %>
+        </div>
+
+      <div class="field">
+        <%= f.password_field :password, placeholder: "Hasło (min. 8 znaków)", autocomplete: "off", :required => 'required' %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, placeholder: "Powtórz hasło", autocomplete: "off", :required => 'required' %>
+      </div>
+
+      <div class="login-button">
+        <%= f.submit "Zarejestruj" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

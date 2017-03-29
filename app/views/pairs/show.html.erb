@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First:</strong>
+  <%= @pair.word_id %>
+</p>
+
+<p>
+  <strong>Second:</strong>
+  <%= @pair.second_id %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @pair.strength %>
+</p>
+
+<%= link_to 'Edit', edit_pair_path(@pair) %> |
+<%= link_to 'Back', pairs_path %>

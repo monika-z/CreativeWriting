@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pisanie twórcze</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+	<link href='http://fonts.googleapis.com/css?family=Amatic+SC&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,600i" rel="stylesheet"></head>
+<body>
+
+<!-- header -->
+  <header>
+
+      <div class="logo">
+           <%= link_to('Write', root_path) %>
+      </div>
+
+      <nav id="main-nav-wrap">
+        <ul class="main-navigation">
+          <li class="<%= 'current' if current_page?(root_path) %>"><%= link_to('Strona główna', root_path) %>
+          </li>
+          <li class="<%= 'current' if current_page?(posts_path) %>"> <%= link_to('Opowiadania', posts_path) %></li>
+          <% if user_signed_in? %>
+          	<li > <%= link_to("Skojarzenia", random_path) %></li>
+          	<li class="<%= 'current' if current_page?(profile_path) %>"> <%= link_to("Profil (#{current_user.username})", profile_path) %></li>
+            <li  class="highlight with-sep"><%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %>        
+            </li>
+          	
+          <% else %>
+            <li  class="highlight with-sep">
+              <%= link_to('Zaloguj się', new_user_session_path)  %> 
+          	</li>
+            <li  class="highlight with-sep">
+          	  <%= link_to('Zarejestruj', new_user_registration_path)  %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+
+      <div class="words-of-the-day">
+      <!-- <div class="title">Of the day</div> -->
+        <% tr = Trio.last %>
+          <ul>
+            <li><%=  tr.word.content %></li>
+            <li>|</li>
+            <li><%= tr.next.content %></li>
+            <li>|</li>
+            <li><%= tr.previous.content %></li>
+          </ul>
+      </div>
+      <% if user_signed_in? %>
+      <div class="nsb">
+        <div class="nsb-add"><%= link_to 'Dodaj&nbsp;nowe&nbsp;opowiadanie'.html_safe, new_post_path %></div>
+        <div class="new-story"></div>
+      </div>
+      <div class="shading">write</div>
+    <% end %>
+  </header>
+  <!-- header --> 
+  <div class="box">
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
+
+  <footer>EPI 2016 | Monika Zygmunt<br>
+
+<div style="font-size:0.7em; width:60%; margin: 0 auto; line-height:1.4em;">Autorem niniejszego  serwisu jest  Monika Zygmunt. Serwis ten stanowi integralną  część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji),  przygotowanej  pod kierunkiem prof. dr. hab. Wiesława Lubaszewskiego na Wydziale  Zarządzania i Komunikacji Społecznej Uniwersytetu  Jagiellońskiego.</div>
+  </footer>
+
+</body>
+</html>

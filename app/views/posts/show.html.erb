@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+
+<div class="lead">
+  <div class="title">
+    <h1><strong><%= @post.title %></strong></h1>
+    <h2><strong><a href="/11_zygmunt/write/user/<%= @post.user.username %>"><%= @post.user.username %></a> </strong></h2> 
+     <div class="date"><%= @post.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %></div>
+  </div>
+
+
+
+<div class="story-summary">
+  <hr>
+    <blockquote>
+      <%= @post.summary %>
+    </blockquote>
+</div>
+
+</div>
+<p>
+  <%= h(@post.content).gsub(/\n/, ' <br /> ').html_safe %>
+</p>
+<div class="post-actions">
+  <p>
+    <% if current_user == @post.user %>
+      <%= link_to  '<i class="fa fa-3x fa-pencil-square" aria-hidden="true"></i>'.html_safe, edit_post_path(@post) %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to '<i class="fa fa-3x fa-trash" aria-hidden="true"></i>'.html_safe, @post, method: :delete, data: { confirm: 'Jesteś pewny/a, że chcesz usunąć?' } %>
+    <% end %>
+  </p>
+</div>
+<hr>
+
+<div class="post-bottom">
+  <div class="go-back">
+    <%= link_to '<i class="fa fa-backward" aria-hidden="true"></i>&nbsp;&nbsp;Powrót'.html_safe, posts_path %>
+  </div>
+  <div class="comment-count">
+    <p>Komentarze (<%= @post.comments.size %>)</p>
+  </div>
+</div>
+
+<% @post.comments.each do |comment| %>
+  <div class="posts-summary">
+    <div class="post-summary-header">
+        <div class="heading">
+          <div class="icon">
+            <i class="fa fa-2x fa-comments-o" aria-hidden="true"></i>
+          </div>
+        <h4>
+          <strong><%= comment.user.username %></strong>
+        </h4>
+        <div class="post-management">
+          <%if current_user == comment.user %>
+              <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, [comment.post, comment], method: :delete, data: { confirm: 'Czy na pewno usunąć ten komentarz?' } %>
+          <% end %>
+        </div>
+        <div class="datetime">
+          <%= comment.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %> 
+        </div>
+      </div>
+      <div>
+          <%= comment.comment %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<% if user_signed_in? %>
+  <div class="comment-box">
+    <p>Dodaj komentarz jako: 
+      <strong><%= current_user.username %></strong><br>
+    </p>
+  	
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+
+      <p>
+        <%= f.text_area :comment, :required => 'required' %>
+      </p>
+      <p class="icon-comment"><i class="fa fa-2x fa-comments-o" aria-hidden="true"></i></p>
+      <div class="super">
+        <p class ="actions">
+          <%= f.submit 'Dodaj' %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

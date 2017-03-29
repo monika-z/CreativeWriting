@@ -1,0 +1,17 @@
+<% if current_user.username == "admin" %>
+<p id="notice"><%= notice %></p>
+
+<h1>Słowa dnia:</h1>
+
+
+    <% @trios.each do |trio| %>
+    <%= trio.created_at.strftime('%d-%m-%Y') %> =>
+<%= trio.word.content %> - <%= trio.next.content %> - <%= trio.previous.content %> || 
+<%= link_to 'Usuń', trio, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> <br />
+    <% end %>
+
+<br>
+<% end %>
+
+<div class='flickr_pagination'>
+<%= will_paginate @words, :previous_label => "&#8592;", :next_label => "&#8594;"  %></div>

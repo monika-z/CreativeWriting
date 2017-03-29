@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="posts-list">
+	<div class="page-heading">
+		<h1>Aktualności:</h1>
+	</div>
+	<div id="word-box">
+		<%= render "show" %>
+	</div>
+
+	<div id="news-box">
+		
+	    <% @posts.each do |post| %>
+	    	<div class="posts-summary">
+	    		<div class="post-summary-header">
+	    			<div class="heading">
+			    		<div class="icon">
+			    			<i class="fa fa-2x fa-bookmark" aria-hidden="true"></i>
+			    		</div>
+			    		<h4> 
+			    			<%= link_to post.title, post %> -&nbsp;<a href="/11_zygmunt/write/user/<%= post.user.username %>"><%= post.user.username %></a>
+			    		</h4>
+					</div>
+					<div class="post-management">
+						<% if current_user && current_user.username == "admin" %>
+							<%= link_to '<i class="fa fa-pencil-square" aria-hidden="true"></i>'.html_safe,
+	 edit_post_path(post) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+							<%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, post, method: :delete, data: { confirm: 'Jesteś pewny/a, że chcesz usunąć?' } %>
+						<% end %>
+					</div>
+					<div class="datetime">
+						<%= post.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %> 
+					</div>
+		       </div>
+				
+				 
+				<blockquote>
+		        	<%= post.summary %>
+		        </blockquote>
+		        
+		        <div class="read-more">
+		        	<%= link_to 'Czytaj dalej', post %>
+		        </div>
+				<div class="shadow"></div>
+				
+			</div>
+		<% end %>
+		<%= will_paginate @posts, :previous_label => '<i class="fa fa-caret-left" aria-hidden="true"></i>'.html_safe, :next_label => '<i class="fa fa-caret-right" aria-hidden="true"></i>'.html_safe %>
+	</div>
+</div>
+		
+		

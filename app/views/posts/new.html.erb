@@ -1,0 +1,8 @@
+<% if current_user.username == "admin" %><div id ="admin">
+<h1>Aktualności:</h1></div>
+<% else %>
+<h1>Nowe opowiadanie:</h1>
+<%end%>
+<%= render 'form' %>
+
+<%= link_to 'Powrót', posts_path %>

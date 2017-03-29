@@ -1,0 +1,62 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+en:
+  devise:
+    confirmations:
+      confirmed: "Twój email został potwierdzony."
+      send_instructions: "Za moment otrzymasz emaila z dalszymi instrukcjami."
+      send_paranoid_instructions: "Jeżeli twój email istnieje w naszej bazie danych, otrzymasz wiadomosć z instrukcją jak potwierdzić rejestracje konta."
+    failure:
+      already_authenticated: "Jesteś już zalogowany/a."
+      inactive: "Twoje konto nie jest jeszcze aktywne."
+      invalid: "Niepoprawny %{authentication_keys} lub hasło."
+      locked: "Twoje konto jest zablokowane."
+      last_attempt: "Masz jeszcze jedną próbę zanim twoje konto zostanie zablokowane."
+      not_found_in_database: "Niepoprawny %{authentication_keys} lub hasło."
+      timeout: "Twoja sesja wygasła. Zaloguj się ponownie."
+      unauthenticated: "Aby kontynuować, zaloguj lub zarejestruj się."
+      unconfirmed: "Musisz potwierdzić adres email, żeby kontynuować."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrukcja potwierdzenia konta"
+      reset_password_instructions:
+        subject: "Instrukcja resetowania konta"
+      unlock_instructions:
+        subject: "Unlock instructions"
+      password_change:
+        subject: "Zmiana hasła"
+    omniauth_callbacks:
+      failure: "Nie udało się zautentykować %{kind} ponieważ \"%{reason}\"."
+      success: "Udało się zautentykować %{kind} konto."
+    passwords:
+      no_token: "Sorry, zły adres. Sprawdź email jeszcze raz"
+      send_instructions: "Za moment otrzymasz e-mail z instrukcją jak zmienić hasło"
+      send_paranoid_instructions: "Jeżeli twój email istnieje w naszej bazie danych, otrzymasz wiadomosć z instrukcją jak zmienić hasło"
+      updated: "Twoje hasło zostało zmienione. Jesteś teraz zalogowany/a."
+      updated_not_active: "Twoje hasło zostało zmienione."
+    registrations:
+      destroyed: "Twoje konto zostało usunięte."
+      signed_up: "Witamy! Rejestracja powiodła się."
+      signed_up_but_inactive: "Rejestracja powiodła się. Potwierdź email, żeby móc się zalogować."
+      signed_up_but_locked: "Rejestracja powiodła się. Niestety twoje konto jest zablokowane."
+      signed_up_but_unconfirmed: "Wiadomość z instrukcją potwierdzena konta została wysłana na twój email."
+      update_needs_confirmation: "Wprowadziłeś zmiany, aby zostały zaakceptowane potwierdź swój email"
+      updated: "Twoje dane zostały pomyślnie zaktualizowane."
+    sessions:
+      signed_in: "Zalogowano."
+      signed_out: "Wylogowano."
+      already_signed_out: "Wylogowano."
+    unlocks:
+      send_instructions: "Za moment dostaniesz email z instrukcją jak odblokować konto."
+      send_paranoid_instructions: "Jeśli twój email instnieje, za moment dostaniesz email z instrukcją jak odblokować konto."
+      unlocked: "Odblokowano konto, zaloguj się żeby kontynuować"
+  errors:
+    messages:
+      already_confirmed: "już potwierdzono, spróbuj się zalogować"
+      confirmation_period_expired: "wymaga potwierdzenia do %{period}, załóż nowe"
+      expired: "wygasło, załóż nowe"
+      not_found: "nieznaleziono"
+      not_locked: "nie zablokowano"
+      not_saved:
+        one: "1 błąd uniemożliwił zapisanie %{resource}:"
+        other: "%{count} błędy, uniemożliwiły zapisanie %{resource}:"
