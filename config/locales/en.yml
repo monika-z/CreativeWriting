@@ -20,4 +20,43 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  comment:
+    add: "Comment as:"
+  errors:
+    empty: "Field cannot be empty"
+    length: "Field must contain at least 2 characters"
+    unique: "Already exists"
+    post: "Can't save post:"
+    word: "prohibited this word from being saved:"
+  user:
+    admin: "Admin Panel"
+    news: "Add news"
+    posts: "Your posts:"
+    notlogged: "You're not logged in"
+    entries: "All posts of user:"
+  post:
+    add: "Add new post"
+    title: "Title"
+    content: "Content"
+    summary: "Summary"
+    edit: "Edit post"
+    back: "Go back to the post"
+    all: "All posts"
+    confirm: "Are you sure you want to delete?"
+    comment: "Comments:"
+    admin: "News:"
+    new: "New post"
+    read: "Read more"
+  trio:
+    all: "Words of the day:" 
+    confirm: "Are you sure you want to get new words of the day?"
+    list: "List of words of the day"
+    random: "Get new words of the day"
+    delete: "Are you sure you want to delete?"
+  word:
+    all: "Words:"
+    prompt: "Add association:"
+    login: "Log in to add associations"
+    list: "Words list"
+    pairs: "Pairs:"
+
