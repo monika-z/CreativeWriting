@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="posts-list">
   <div class="page-heading"> 
-    <h1>Opowiadania użytkownika: <%= @username %></h1>
+    <h1><%= t('user.entries') %> <%= @username %></h1>
   </div>
 
     <% @posts.each do |post| %>
@@ -12,26 +12,25 @@
                     <i class="fa fa-2x fa fa-book" aria-hidden="true"></i>
                   </div>
                   <h4> 
-                      <%= link_to post.title, post %> -&nbsp;<a href="/11_zygmunt/write/user/<%= post.user.username %>"><%= post.user.username %></a>
+                      <%= link_to post.title, post %> -&nbsp;<%= post.user.username %></a>
                   </h4>
                 </div>
               <div class="post-management">
                 <% if current_user && (current_user == post.user || current_user.username == "admin") %>
                   <%= link_to '<i class="fa fa-pencil-square" aria-hidden="true"></i>'.html_safe,
        edit_post_path(post) %>&nbsp;&nbsp;|&nbsp;&nbsp;
-                  <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, post, method: :delete, data: { confirm: 'Jesteś pewny/a, że chcesz usunąć?' } %>
+                  <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, post, method: :delete, data: { confirm: t('post.confirm') } %>
                 <% end %>
               </div>
               <div class="datetime">
-                <%= post.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %> 
+                <%= post_date(post) %> 
               </div>
                 </div>
             <blockquote>
                   <%= post.summary %>
                 </blockquote>
                 <div class="read-more">
-                  <% @a = post.comments.size %>
-              <%= link_to "Komentarze: #{@a}", post %>
+                  <%= post_comments(post) %>
             </div>
       </div>
     <% end %>

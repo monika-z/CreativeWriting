@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> Nie można zapisać opowiadania, ponieważ:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> <%= t('errors.post') %> </h2>
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Tytuł:' %><br>
+    <%= f.label t('post.title') %><br>
     <%= f.text_field :title, :required => 'required' %>
   </div>
   <div class="field">
-    <%= f.label 'Treść:' %><br>
+    <%= f.label t('post.content') %><br>
     <%= f.text_area :content, :required => 'required' %>
   </div>
   <div class="field">
-    <%= f.label 'Opis:' %><br>
+    <%= f.label t('post.summary') %><br>
     <%= f.text_area :summary, :required => 'required' %>
   </div>
   <div class="actions">
-    <%= f.submit 'Gotowe' %>
+    <%= f.submit %>
   </div>
 <% end %>

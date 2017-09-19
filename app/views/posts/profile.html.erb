@@ -1,27 +1,25 @@
 <p id="notice"><%= notice %></p>
 <div class="posts-list">
 	<% if user_signed_in? %>
-
-
 		<% if current_user.username == "admin" %>
 			<div id ="admin">
 				<div class="page-heading">
-					<h1>Panel administratora</h1>
+					<h1><%= t('user.admin') %></h1>
 				</div>
 				<p>
-				<%= link_to "Dodaj nowy post do aktualności", new_post_path %>
-				<%= link_to "Lista słów", words_path %> </p><p>
-				<%= link_to "Lista słów dnia", trios_path %> 
-				<%= link_to "Losuj nowe słowa dnia", rand_path, :method => :post, data: { confirm: 'Czy na pewno chcesz losować?' } %>
+				<%= link_to t('user.news'), new_post_path %>
+				<%= link_to t('word.list'), words_path %> </p><p>
+				<%= link_to t('trio.list'), trios_path %> 
+				<%= link_to t('trio.random'), rand_path, :method => :post, data: { confirm: t('trio.confirm') } %>
 				</p><br /><br />
 			</div>
 			<div class="page-heading">
-				<h1> Aktualności </h1>
+				<h1> <%= t('post.admin') %> </h1>
 			</div>
 		<% else %>
 			
 			<div class="page-heading">
-				<h1>Twoje opowiadania:</h1> 
+				<h1><%= t('user.posts') %></h1> 
 			</div>
 		<% end %>
 	   	<% @posts.each do |post| %>
@@ -32,7 +30,7 @@
 					    			<i class="fa fa-2x fa fa-book" aria-hidden="true"></i>
 					    		</div>
 					    		<h4> 
-			       					<%= link_to post.title, post %> -&nbsp;<a href="/11_zygmunt/write/user/<%= post.user.username %>"><%= post.user.username %></a>
+			       					<%= link_to post.title, post %> -&nbsp;<%= post.user.username %></a>
 					    		</h4>
 					    	</div>
 							<div class="post-management">
@@ -43,21 +41,20 @@
 						 		<% end %>
 						 	</div>
 							<div class="datetime">
-								<%= post.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %> 
+								<%= post_date(post) %> 
 							</div>
 				       	</div>
 						<blockquote>
 				        	<%= post.summary %>
 				        </blockquote>
 				        <div class="read-more">
-			        		<% @a = post.comments.size %>
-							<%= link_to "Komentarze: #{@a}", post %>
+			        		<%= post_comments(post) %>
 						</div>
 			</div>
 		<% end %>
 	<% else %>
 	<div class="page-heading">
-		<h1>Nie jesteś zalogowany/a</h1>
+		<h1><%= t('user.notlogged') %></h1>
 	</div>
 
 	<% end %>

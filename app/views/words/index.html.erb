@@ -1,7 +1,7 @@
 <div class="posts-list">
 	<% if current_user.username == "admin" %>
 		<div class="page-heading">
-			<h1>Słowa</h1>
+			<h1><%= t('word.all') %></h1>
 		</div>
 		<div class="table-mrg">
 			<table>
@@ -16,9 +16,6 @@
 				</tbody>
 			</table>
 		</div>
-
-	    
-
 
 		<div class='flickr_pagination'>
 			<%= will_paginate @words, :previous_label => '<i class="fa fa-caret-left" aria-hidden="true"></i>'.html_safe, :next_label => '<i class="fa fa-caret-right" aria-hidden="true"></i>'.html_safe  %>

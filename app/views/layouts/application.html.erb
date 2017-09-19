@@ -19,21 +19,21 @@
 
       <nav id="main-nav-wrap">
         <ul class="main-navigation">
-          <li class="<%= 'current' if current_page?(root_path) %>"><%= link_to('Strona główna', root_path) %>
+          <li class="<%= 'current' if current_page?(root_path) %>"><%= link_to('Home', root_path) %>
           </li>
-          <li class="<%= 'current' if current_page?(posts_path) %>"> <%= link_to('Opowiadania', posts_path) %></li>
+          <li class="<%= 'current' if current_page?(posts_path) %>"> <%= link_to('Posts', posts_path) %></li>
           <% if user_signed_in? %>
-          	<li > <%= link_to("Skojarzenia", random_path) %></li>
-          	<li class="<%= 'current' if current_page?(profile_path) %>"> <%= link_to("Profil (#{current_user.username})", profile_path) %></li>
-            <li  class="highlight with-sep"><%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %>        
+          	<li > <%= link_to("Associtions", random_path) %></li>
+          	<li class="<%= 'current' if current_page?(profile_path) %>"> <%= link_to("Profile (#{current_user.username})", profile_path) %></li>
+            <li  class="highlight with-sep"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
             </li>
           	
           <% else %>
             <li  class="highlight with-sep">
-              <%= link_to('Zaloguj się', new_user_session_path)  %> 
+              <%= link_to('Login', new_user_session_path)  %> 
           	</li>
             <li  class="highlight with-sep">
-          	  <%= link_to('Zarejestruj', new_user_registration_path)  %>
+          	  <%= link_to('Register', new_user_registration_path)  %>
             </li>
           <% end %>
         </ul>
@@ -52,7 +52,7 @@
       </div>
       <% if user_signed_in? %>
       <div class="nsb">
-        <div class="nsb-add"><%= link_to 'Dodaj&nbsp;nowe&nbsp;opowiadanie'.html_safe, new_post_path %></div>
+        <div class="nsb-add"><%= link_to t('post.add'), new_post_path %></div>
         <div class="new-story"></div>
       </div>
       <div class="shading">write</div>
@@ -66,7 +66,11 @@
 
   <footer>EPI 2016 | Monika Zygmunt<br>
 
-<div style="font-size:0.7em; width:60%; margin: 0 auto; line-height:1.4em;">Autorem niniejszego  serwisu jest  Monika Zygmunt. Serwis ten stanowi integralną  część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji),  przygotowanej  pod kierunkiem prof. dr. hab. Wiesława Lubaszewskiego na Wydziale  Zarządzania i Komunikacji Społecznej Uniwersytetu  Jagiellońskiego.</div>
+<div style="font-size:0.7em; width:60%; margin: 0 auto; line-height:1.4em;">
+  Autorem niniejszego  serwisu jest  Monika Zygmunt. 
+  Serwis ten stanowi integralną  część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji),  
+  przygotowanej  pod kierunkiem prof. dr. hab. Wiesława Lubaszewskiego 
+  na Wydziale  Zarządzania i Komunikacji Społecznej Uniwersytetu  Jagiellońskiego.</div>
   </footer>
 
 </body>

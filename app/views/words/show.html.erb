@@ -7,14 +7,11 @@
       <h1><%= @word.content %>&nbsp;&nbsp;<%= link_to '<i class="fa fa-pencil-square" aria-hidden="true"></i>'.html_safe,
        edit_word_path(@word) %></h1>
       <div class="pairs">
-        <h3>Pary:</h3>
+        <h3><%= t('word.pairs') %></h3>
         <% @word.pairs.each do |pair| %>
           <p>
             <strong>
-              <%= pair.word.content%>
-        		  <% if Word.exists?(pair.second_id) %>
-        		    - <%= Word.find(pair.second_id).content %>
-        		  <% end %>
+              <%= pair.word.content%> <%= word_pair(pair) %>
             </strong>
           </p>
         <% end %>
@@ -29,15 +26,15 @@
       <%= form_for([@word, @word.pairs.build]) do |f| %>
 
         <p>
-          <h3><%= f.label 'Podaj skojarzenie:' %></h3>
+          <h3><%= f.label t('word.prompt') %></h3>
           <%= f.text_field :second_id, :required => 'required' %>
         </p>
         <p class ="actions">
-          <%= f.submit 'Dodaj' %>
+          <%= f.submit %>
         </p>
       <% end %>
       <div class="wa-button">
-        <%= link_to 'Kolejne Słowo&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-forward" aria-hidden="true"></i>'.html_safe, random_path %>
+        <%= link_to 'Next word&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-forward" aria-hidden="true"></i>'.html_safe, random_path %>
       </div>
     </div>
 

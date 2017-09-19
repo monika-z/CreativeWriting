@@ -3,14 +3,14 @@
 <%= form_for([@word, @word.pairs.build]) do |f| %>
 
 	<p>
-		<h3><%= f.label 'Podaj skojarzenie:' %></h3>
+		<h3><%= f.label  t('word.prompt') %></h3>
 		<%= f.text_field :second_id, :required => 'required' %>
 	</p>
 	<p class="actions">
-		<%= f.submit 'Dodaj' %>
+		<%= f.submit %>
 	</p>
 <% end %>
 
 <% else %>
-	<h3> Zaloguj się by móc dodawać skojarzenia </h3>
+	<h3> <%= t('word.login') %> </h3>
 <% end %>

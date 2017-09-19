@@ -3,11 +3,9 @@
 <div class="lead">
   <div class="title">
     <h1><strong><%= @post.title %></strong></h1>
-    <h2><strong><a href="/11_zygmunt/write/user/<%= @post.user.username %>"><%= @post.user.username %></a> </strong></h2> 
-     <div class="date"><%= @post.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %></div>
+    <h2><strong><%= @post.user.username %></a> </strong></h2> 
+     <div class="date"><%= post_date(@post) %></div>
   </div>
-
-
 
 <div class="story-summary">
   <hr>
@@ -24,7 +22,7 @@
   <p>
     <% if current_user == @post.user %>
       <%= link_to  '<i class="fa fa-3x fa-pencil-square" aria-hidden="true"></i>'.html_safe, edit_post_path(@post) %>&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to '<i class="fa fa-3x fa-trash" aria-hidden="true"></i>'.html_safe, @post, method: :delete, data: { confirm: 'Jesteś pewny/a, że chcesz usunąć?' } %>
+      <%= link_to '<i class="fa fa-3x fa-trash" aria-hidden="true"></i>'.html_safe, @post, method: :delete, data: { confirm: t('post.confirm') } %>
     <% end %>
   </p>
 </div>
@@ -35,7 +33,7 @@
     <%= link_to '<i class="fa fa-backward" aria-hidden="true"></i>&nbsp;&nbsp;Powrót'.html_safe, posts_path %>
   </div>
   <div class="comment-count">
-    <p>Komentarze (<%= @post.comments.size %>)</p>
+    <p> <%= post_comments(@post) %> </p>
   </div>
 </div>
 
@@ -55,7 +53,7 @@
           <% end %>
         </div>
         <div class="datetime">
-          <%= comment.created_at.in_time_zone("Europe/Warsaw").strftime('%d-%m-%Y %H:%M:%S') %> 
+          <%= post_date(comment) %>
         </div>
       </div>
       <div>
@@ -65,10 +63,9 @@
   </div>
 <% end %>
 
-
 <% if user_signed_in? %>
   <div class="comment-box">
-    <p>Dodaj komentarz jako: 
+    <p><%= t('comment.add') %>
       <strong><%= current_user.username %></strong><br>
     </p>
   	
@@ -80,7 +77,7 @@
       <p class="icon-comment"><i class="fa fa-2x fa-comments-o" aria-hidden="true"></i></p>
       <div class="super">
         <p class ="actions">
-          <%= f.submit 'Dodaj' %>
+          <%= f.submit  %>
         </p>
       </div>
     <% end %>
