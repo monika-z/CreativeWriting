@@ -4,6 +4,6 @@ class Word < ActiveRecord::Base
 	has_many :trios, dependent: :destroy
 	has_many :nexts, through: :trios
 	has_many :previouses, through: :trios
-	validates :content, presence: { message: "Słowo nie może być puste" }, length: { minimum: 2, too_short: "Słowo musi być dłuższe"}, uniqueness: {message: "To słowo już istnieje"}
+	validates :content, presence: { message: I18n.t('errors.empty') }, length: { minimum: 2, too_short: I18n.t('errors.length') }, uniqueness: {message: I18n.t('errors.unique')}
 
 end
