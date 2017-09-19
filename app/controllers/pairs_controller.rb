@@ -7,20 +7,6 @@ class PairsController < ApplicationController
     @pairs = Pair.all
   end
 
-  # GET /pairs/1
-  # GET /pairs/1.json
-  def show
-  end
-
-  # GET /pairs/new
-  def new
-    @pair = Pair.new
-  end
-
-  # GET /pairs/1/edit
-  def edit
-  end
-
   # POST /pairs
   # POST /pairs.json
   def create

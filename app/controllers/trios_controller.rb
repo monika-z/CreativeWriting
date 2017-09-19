@@ -7,22 +7,12 @@ class TriosController < ApplicationController
     @trios = Trio.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
   end
 
-  # GET /trios/1
-  # GET /trios/1.json
-  def show
-  end
-
   # GET /trios/new
   def new
     @trio = Trio.new
   end
 
-  # GET /trios/1/edit
-  def edit
-  end
-
-
-def random
+  def random
 
     #sprawdza czy słowo ma poprzednik i następnik
     #i czy nie są takie same
