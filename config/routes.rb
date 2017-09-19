@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :trios, only: [:index, :destroy, :show, :random]
+  resources :trios, only: [:index, :destroy, :random]
 
   resources :words do
     resources :pairs, only: [:show, :new, :create]
