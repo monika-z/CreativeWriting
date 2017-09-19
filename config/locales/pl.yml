@@ -1,0 +1,40 @@
+pl:
+  comment:
+    add: "Dodaj komentarz jako:"
+  errors:
+    empty: "To pole nie może być puste:"
+    length: "To pole musi zawierać conajmniej 2 znaki"
+    unique: "Już istnieje"
+    post: "Nie można zapisać postu:"
+    word: "to słowo nie może być zapisane ponieważ:"
+  user:
+    admin: "Panel Administratora"
+    news: "Dodaj aktualności:"
+    posts: "Twoje opowiadania:"
+    notlogged: "Nie jesteś zalogowany"
+    entries: "Wszystkie opowiadania użytwkownika:"
+  post:
+    add: "Dodaj nowe opowiadanie"
+    title: "Tytuł"
+    content: "Treść"
+    summary: "Opis"
+    edit: "Edytuj opowiadanie"
+    back: "Powrót do opowiadania"
+    all: "Wszystkie opowiadania"
+    confirm: "Czy na pewno chcesz usunąć?"
+    comment: "Komentarze:"
+    admin: "Aktualności:"
+    new: "Nowe opowiadanie"
+    read: "Czytaj dalej"
+  trio:
+    all: "Słowa dnia:" 
+    confirm: "Czy na pewno chcesz losować nowe słowa dnia?"
+    list: "Lista słów dnia"
+    random: "Wylosuj nowe słowa dnia"
+    delete: "Czy na pewno chcesz usunąć?"
+  word:
+    all: "Słowa:"
+    prompt: "Dodaj skojarzenie:"
+    login: "Zaloguj się, żeby dodawać skojarzenia"
+    list: "Lista słów"
+    pairs: "Pary:"
